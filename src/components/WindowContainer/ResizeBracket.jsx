@@ -88,17 +88,14 @@ export default function ResizeBracket({
 
   return (
     <div
+      className={`absolute bg-yellow-200 cursor-${
+        orientation === "top" || orientation === "bottom" ? "ns" : "ew"
+      }-resize`}
       style={{
-        position: "absolute",
-        backgroundColor: "yellow",
-        width: width,
-        height: height,
-        top: top,
-        right: right,
-        cursor:
-          orientation === "top" || orientation === "bottom"
-            ? "ns-resize"
-            : "ew-resize",
+        width,
+        height,
+        top,
+        right,
       }}
       onMouseDown={startResizing}
     ></div>

@@ -2,17 +2,7 @@ import WindowContainer from "./components/WindowContainer";
 
 function App() {
   return (
-    <div
-      className="white-theme alert-colors"
-      style={{
-        flexDirection: "column",
-        overflow: "hidden",
-        width: "100vw",
-        height: "100vh",
-        borderRadius: "0.6rem",
-        backgroundColor: "var(--background3)",
-      }}
-    >
+    <div className="flex-col overflow-hidden w-screen h-screen rounded-[0.6rem] - white-theme alert-colors">
       <WindowContainer>
         <iframe
           src={`https://www.youtube.com/embed/${
