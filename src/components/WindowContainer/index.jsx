@@ -50,42 +50,20 @@ export default function WindowContainer({
   return (
     <div
       style={{
-        backgroundColor: "red",
-        position: "absolute",
-
-        display: "flex",
-        flexDirection: "column",
-
         minWidth: `${minWidth}px`,
         minHeight: `${minHeight}px`,
         width: `${minWidth}px`,
         height: `${minHeight}px`,
       }}
+      className={`bg-red-500 absolute flex flex-col`}
       ref={windowRef}
     >
       {/* TODO: container */}
-      <div
-        style={{
-          backgroundColor: "pink",
-          display: "flex",
-          flexDirection: "column",
-          position: "relative",
-
-          width: "100%",
-          height: "100%",
-        }}
-      >
+      <div className="bg-pink-400 flex flex-col w-full h-full relative">
         {/* TODO: header */}
         <div>
           <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              height: "2rem",
-              width: "100%",
-              backgroundColor: "blue",
-            }}
+            className="flex justify-between items-center h-8 w-full bg-blue-400"
             onMouseDown={startDragging}
           >
             header
@@ -93,16 +71,7 @@ export default function WindowContainer({
         </div>
 
         {/* TODO: content */}
-        <div
-          style={{
-            backgroundColor: "green",
-            display: "flex",
-            width: "100%",
-            height: "100%",
-          }}
-        >
-          {children}
-        </div>
+        <div className="bg-green-400 flex-grow w-full h-full">{children}</div>
 
         {/* TODO: resize window BRACKET */}
         <ResizeBracket
@@ -156,57 +125,56 @@ export default function WindowContainer({
             changeIframeInteractions,
           }}
         />
+        {/* TODO: resize window CORNER */}
+
+        <ResizeCorner
+          top="-0.6rem"
+          right="-0.6rem"
+          orientation="top-right"
+          {...{
+            minHeight,
+            minWidth,
+            windowRef,
+            changeIframeInteractions,
+          }}
+        />
+
+        <ResizeCorner
+          orientation="top-left"
+          top="-0.6rem"
+          right="calc(100% + -0.4rem)"
+          {...{
+            minHeight,
+            minWidth,
+            windowRef,
+            changeIframeInteractions,
+          }}
+        />
+
+        <ResizeCorner
+          orientation="bottom-right"
+          top="calc(100% + -0.4rem)"
+          right="-0.6rem"
+          {...{
+            minHeight,
+            minWidth,
+            windowRef,
+            changeIframeInteractions,
+          }}
+        />
+
+        <ResizeCorner
+          orientation="bottom-left"
+          top="calc(100% + -0.4rem)"
+          right="calc(100% + -0.4rem)"
+          {...{
+            minHeight,
+            minWidth,
+            windowRef,
+            changeIframeInteractions,
+          }}
+        />
       </div>
-
-      {/* TODO: resize window CORNER */}
-
-      <ResizeCorner
-        top="-0.6rem"
-        right="-0.6rem"
-        orientation="top-right"
-        {...{
-          minHeight,
-          minWidth,
-          windowRef,
-          changeIframeInteractions,
-        }}
-      />
-
-      <ResizeCorner
-        orientation="top-left"
-        top="-0.6rem"
-        right="calc(100% + -0.4rem)"
-        {...{
-          minHeight,
-          minWidth,
-          windowRef,
-          changeIframeInteractions,
-        }}
-      />
-
-      <ResizeCorner
-        orientation="bottom-right"
-        top="calc(100% + -0.4rem)"
-        right="-0.6rem"
-        {...{
-          minHeight,
-          minWidth,
-          windowRef,
-          changeIframeInteractions,
-        }}
-      />
-
-      <ResizeCorner
-        orientation="bottom-left"
-        top="calc(100% + -0.4rem)"
-        right="calc(100% + -0.4rem)"
-        {...{
-          minHeight,
-          minWidth,
-          windowRef,
-          changeIframeInteractions,
-        }}
-      />
     </div>
   );
 }

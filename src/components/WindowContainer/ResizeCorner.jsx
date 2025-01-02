@@ -91,18 +91,14 @@ export default function ResizeCorner({
 
   return (
     <div
+      className={`absolute w-4 h-4 bg-red-500 cursor-${
+        orientation === "top-left" || orientation === "bottom-right"
+          ? "nwse"
+          : "nesw"
+      }-resize`}
       style={{
-        position: "absolute",
-        backgroundColor: "orange",
-        width: "1rem",
-        height: "1rem",
-
         top,
         right,
-        cursor:
-          orientation === "top-left" || orientation === "bottom-right"
-            ? "nwse-resize"
-            : "nesw-resize",
       }}
       onMouseDown={startResizing}
     />
